@@ -24,9 +24,6 @@ public class Song {
 
     private String author;
 
-    @OneToMany
-    List<Singer> singers;
-
     private String posted;
 
     private String album;
