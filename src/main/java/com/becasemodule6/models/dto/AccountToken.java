@@ -11,7 +11,6 @@ import java.util.List;
 public class AccountToken {
     private Long id;
     private String username;
-    private String password;
     private String full_name;
     private String gender;
     private String gmail;
