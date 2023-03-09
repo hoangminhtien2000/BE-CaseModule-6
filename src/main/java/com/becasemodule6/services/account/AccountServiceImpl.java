@@ -22,8 +22,8 @@ public class AccountServiceImpl implements IAccountService, UserDetailsService {
     }
 
     @Override
-    public Account save(Account account) {
-        return accountRepo.save(account);
+    public void save(Account account) {
+         accountRepo.save(account);
     }
 
     @Override
