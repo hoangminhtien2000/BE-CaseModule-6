@@ -15,19 +15,6 @@ public class AccountController {
     @Autowired
     AccountServiceImpl accountService;
 
-//    @PostMapping("/profile/{avatar}")
-//    public AccountToken saveProfile(@RequestBody AccountToken accountToken, @PathVariable String avatar) {
-//        long id = accountToken.getId();
-//        Account account = accountService.findById(id);
-//        account.setUsername(accountToken.getUsername());
-//        account.setAddress(accountToken.getAddress());
-//        account.setGmail(accountToken.getGmail());
-//        account.setPhone_number(accountToken.getPhone_number());
-//        account.setAvatar(avatar);
-//        accountService.save(account);
-//        return new AccountToken(id, accountToken.getUsername(), accountToken.getFull_name(), account.getGender(), accountToken.getGmail(), accountToken.getAddress(), accountToken.getPhone_number(), account.getAvatar(), account.getRoles(), accountToken.getToken());
-//    }
-
     @PostMapping("/profile")
     public AccountToken saveProfile(@RequestBody AccountToken accountToken) {
         long id = accountToken.getId();
@@ -53,5 +40,8 @@ public class AccountController {
     public List<Account> getAll() {
         return accountService.findAll();
     }
+
+    @PostMapping("/password")
+    public void savePassword() {}
 
 }
