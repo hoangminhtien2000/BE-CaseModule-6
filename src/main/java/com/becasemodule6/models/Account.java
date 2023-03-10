@@ -12,7 +12,6 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username", columnDefinition = "VARCHAR(50)", unique = true)
     private String username;
 
     private String password;

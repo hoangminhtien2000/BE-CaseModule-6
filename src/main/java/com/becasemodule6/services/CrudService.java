@@ -5,7 +5,7 @@ import java.util.List;
 public interface CrudService <E>{
     List<E> findAll();
 
-    E save(E e);
+    void save(E e);
 
     void delete(Long id);
 
