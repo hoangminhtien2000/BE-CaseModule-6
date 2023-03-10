@@ -31,9 +31,9 @@ public class SongController {
     }
 
     @PostMapping
-    public ResponseEntity<?> save(@RequestBody Song song) {
+    public ResponseEntity<Song> save(@RequestBody Song song) {
         iSongService.save(song);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(song,HttpStatus.OK);
     }
 
     @PutMapping

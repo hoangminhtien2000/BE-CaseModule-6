@@ -38,8 +38,8 @@ public class SingerSongController {
     @PostMapping()
     public ResponseEntity<?> saveSingerSong(@RequestBody SingerSongId singerSongId) {
         SingerSong singerSong1 = new SingerSong();
-        singerSong1.setSinger(iSingerService.findById(singerSongId.getSingerId()));
-        singerSong1.setSong(iSongService.findById(singerSongId.getSongId()));
+        singerSong1.setSinger(iSingerService.findById(singerSongId.getSinger_id()));
+        singerSong1.setSong(iSongService.findById(singerSongId.getSong_id()));
         iSingerSongService.save(singerSong1);
         return new ResponseEntity<>(HttpStatus.OK);
     }

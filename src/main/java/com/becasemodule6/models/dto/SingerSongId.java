@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class SingerSongId {
-    private Long singerId;
-    private Long songId;
+    private Long singer_id;
+    private Long song_id;
 }
