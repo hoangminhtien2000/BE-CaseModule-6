@@ -28,7 +28,7 @@ public class AccountController {
         return new AccountToken(id, account.getUsername(), account.getFull_name(), account.getGender(), accountToken.getGmail(), accountToken.getAddress(), accountToken.getPhone_number(), account.getAvatar(), account.getRoles(), accountToken.getToken());
     }
 
-    @PostMapping("/profile/avatar")
+    @PostMapping("/save/avatar")
     public Account saveAvatar(@RequestBody Account account) {
         Account account1 = accountService.findById(account.getId());
         account1.setAvatar(account.getAvatar());
@@ -41,7 +41,17 @@ public class AccountController {
         return accountService.findAll();
     }
 
-    @PostMapping("/password")
-    public void savePassword() {}
+    @PostMapping("/save/password")
+    public Account savePassword(@RequestBody Account account) {
+        Account account1 = accountService.findById(account.getId());
+        account1.setPassword(account.getPassword());
+        accountService.save(account1);
+        return account1;
+    }
+
+    @GetMapping("/{id}")
+    public Account findAccountById(@PathVariable long id) {
+        return accountService.findById(id);
+    }
 
 }
