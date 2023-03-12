@@ -1,7 +1,9 @@
 package com.becasemodule6.controllers;
 
 import com.becasemodule6.models.Singer;
+import com.becasemodule6.repositories.SingerRepo;
 import com.becasemodule6.services.singer.ISingerService;
+import com.becasemodule6.services.singer.SingerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,7 @@ import java.util.List;
 public class SingerController {
     @Autowired
     private ISingerService iSingerService;
+
     @GetMapping()
     public ResponseEntity<List<Singer>> findAllSinger(){
         return new ResponseEntity<>(iSingerService.findAll(), HttpStatus.OK) ;
@@ -23,6 +26,12 @@ public class SingerController {
     @GetMapping("/{id}")
     public ResponseEntity<Singer> findByIdSinger(@PathVariable Long id) {
         return new ResponseEntity<>(iSingerService.findById(id), HttpStatus.OK);
+
+    }
+    @GetMapping("/name/{singer_name}")
+    public ResponseEntity<Singer> findSingerBySinger_name(@PathVariable String singer_name) {
+        return new ResponseEntity<>(iSingerService.findSingerBySinger_name(singer_name), HttpStatus.OK);
+
     }
 
     @PostMapping()

@@ -31,4 +31,11 @@ public class SingerServiceImpl implements ISingerService {
     public Singer findById(Long id) {
         return singerRepo.findById(id).get();
     }
+
+    @Override
+    public Singer findSingerBySinger_name(String singer_name){
+     return singerRepo.findSingerBySinger_name(singer_name);
+    }
+
+
 }
