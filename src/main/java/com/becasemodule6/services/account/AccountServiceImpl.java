@@ -39,10 +39,34 @@ public class AccountServiceImpl implements IAccountService, UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountRepo.findAccountByUsername(username);
-        return new User(account.getUsername(),account.getPassword(),account.getRoles());
+        return new User(account.getUsername(), account.getPassword(), account.getRoles());
     }
 
-    public Account findAccountByUsername(String username){
+    public Account findAccountByUsername(String username) {
         return accountRepo.findAccountByUsername(username);
+    }
+
+    public Boolean checkGmail(String gmail, long id) {
+        Account account = accountRepo.findAccountByGmail(gmail);
+        if (account == null) {
+            return true;
+        }
+        if (gmail.equals(account.getGmail()) && id == account.getId()) {
+            return true;
+        }
+        if (!gmail.equals(account.getGmail()) && id == account.getId()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Boolean checkUsername(String username) {
+        Account account = accountRepo.findAccountByUsername(username);
+        if (account == null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

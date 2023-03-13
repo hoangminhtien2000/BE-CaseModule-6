@@ -4,6 +4,8 @@ import com.becasemodule6.models.Account;
 import com.becasemodule6.models.dto.AccountToken;
 import com.becasemodule6.services.account.AccountServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -54,4 +56,16 @@ public class AccountController {
         return accountService.findById(id);
     }
 
+    @PostMapping("/check/gmail")
+    public ResponseEntity<Boolean> checkGmail(@RequestBody Account account) {
+        long id = account.getId();
+        String gmail = account.getGmail();
+        return new ResponseEntity<>(accountService.checkGmail(gmail, id), HttpStatus.OK);
+    }
+
+    @PostMapping("/check/username")
+    public ResponseEntity<Boolean> checkUsername(@RequestBody Account account) {
+        String username = account.getUsername();
+        return new ResponseEntity<>(accountService.checkUsername(username), HttpStatus.OK);
+    }
 }
