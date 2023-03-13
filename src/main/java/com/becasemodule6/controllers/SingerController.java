@@ -15,6 +15,7 @@ import java.util.List;
 public class SingerController {
     @Autowired
     private ISingerService iSingerService;
+
     @GetMapping()
     public ResponseEntity<List<Singer>> findAllSinger(){
         return new ResponseEntity<>(iSingerService.findAll(), HttpStatus.OK) ;
@@ -23,6 +24,12 @@ public class SingerController {
     @GetMapping("/{id}")
     public ResponseEntity<Singer> findByIdSinger(@PathVariable Long id) {
         return new ResponseEntity<>(iSingerService.findById(id), HttpStatus.OK);
+
+    }
+
+    @GetMapping("/name/{singer_name}")
+    public ResponseEntity<Singer> findSingerBySinger_name(@PathVariable String singer_name) {
+        return new ResponseEntity<>(iSingerService.findSingerBySinger_name(singer_name), HttpStatus.OK);
     }
 
     @PostMapping()

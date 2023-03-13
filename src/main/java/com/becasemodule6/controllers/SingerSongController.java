@@ -1,6 +1,5 @@
 package com.becasemodule6.controllers;
 
-import com.becasemodule6.models.Singer;
 import com.becasemodule6.models.SingerSong;
 import com.becasemodule6.models.dto.SingerSongId;
 import com.becasemodule6.services.singer.ISingerService;
