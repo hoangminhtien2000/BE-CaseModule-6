@@ -32,5 +32,4 @@ public class Account {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
 
-
 }
