@@ -32,6 +32,7 @@ public class SongController {
 
     @PostMapping
     public ResponseEntity<Song> save(@RequestBody Song song) {
+        song.setActives(1);
         iSongService.save(song);
         return new ResponseEntity<>(song,HttpStatus.OK);
     }
@@ -48,9 +49,9 @@ public class SongController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
-
-
-
+    @GetMapping("/saveSong/{id}")
+    public ResponseEntity<List<Song>> findSaveSong(@PathVariable int id) {
+        return new ResponseEntity<>(iSongService.findSaveSong(id), HttpStatus.OK);
+    }
 
 }

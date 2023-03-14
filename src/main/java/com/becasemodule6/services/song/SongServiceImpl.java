@@ -31,4 +31,10 @@ public class SongServiceImpl implements ISongService {
     public Song findById(Long id) {
         return songRepo.findById(id).get();
     }
+
+    @Override
+    public List<Song> findSaveSong(int account_id) {
+        return songRepo.findSaveSong(account_id);
+    }
+
 }
