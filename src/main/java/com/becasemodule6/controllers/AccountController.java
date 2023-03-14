@@ -27,7 +27,7 @@ public class AccountController {
         account.setGmail(accountToken.getGmail());
         account.setPhone_number(accountToken.getPhone_number());
         accountService.save(account);
-        return new AccountToken(id, account.getUsername(), account.getFull_name(), account.getGender(), accountToken.getGmail(), accountToken.getAddress(), accountToken.getPhone_number(), account.getAvatar(), account.getRoles(), accountToken.getToken());
+        return new AccountToken(id, account.getUsername(), account.getFull_name(), account.getGender(), accountToken.getGmail(), accountToken.getAddress(), accountToken.getPhone_number(), account.getAvatar(), account.getRoles(), account.getPlaylist(), accountToken.getToken());
     }
 
     @PostMapping("/save/avatar")
