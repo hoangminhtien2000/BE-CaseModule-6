@@ -3,7 +3,6 @@ package com.becasemodule6.models;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
@@ -29,6 +28,8 @@ public class Song {
     private String album;
 
     private String song_music_genre;
+
+    private Long listens;
 
 
 }

@@ -31,4 +31,9 @@ public class SongServiceImpl implements ISongService {
     public Song findById(Long id) {
         return songRepo.findById(id).get();
     }
+    public List<Song> findSongBySinger(int id){
+       return  songRepo.findSongBySinger(id);
+
+
+    }
 }

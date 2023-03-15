@@ -6,6 +6,7 @@ import com.becasemodule6.models.Song;
 import com.becasemodule6.services.singer.ISingerService;
 import com.becasemodule6.services.singerSong.ISingerSongService;
 import com.becasemodule6.services.song.ISongService;
+import com.becasemodule6.services.song.SongServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,9 @@ import java.util.List;
 public class SongController {
     @Autowired
     private ISongService iSongService;
+
+    @Autowired
+    private SongServiceImpl songServiceIml;
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Song>> findAllSong() {
@@ -46,6 +50,13 @@ public class SongController {
     public ResponseEntity<?> delete(@PathVariable Long id) {
         iSongService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+    @GetMapping("/findSongBySinger/{id}")
+    public List<Song> findSongBySinger(@PathVariable int id) {
+        return songServiceIml.findSongBySinger(id);
+
     }
 
 

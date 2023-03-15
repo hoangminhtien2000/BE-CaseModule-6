@@ -2,10 +2,7 @@ package com.becasemodule6.models;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -31,5 +28,7 @@ public class Singer {
     private String hot_music;
 
     private String information;
+    @Column(name = "singer_avatar", columnDefinition = "LONGTEXT")
+    private String singer_avatar;
 
 }
