@@ -14,4 +14,12 @@ public class SingerSong {
     private Singer singer;
     @ManyToOne
     private Song song;
+
+    public SingerSong(Long id) {
+        this.id = id;
+    }
+
+    public SingerSong() {
+
+    }
 }
