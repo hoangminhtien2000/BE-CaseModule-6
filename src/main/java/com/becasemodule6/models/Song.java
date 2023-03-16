@@ -30,6 +30,10 @@ public class Song {
 
     private String song_music_genre;
 
+    private Long account_id;
+
+    private int actives;
+
 
 }
 
