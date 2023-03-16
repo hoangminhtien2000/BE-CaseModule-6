@@ -9,4 +9,9 @@ import java.util.List;
 public interface SongRepo extends PagingAndSortingRepository<Song, Long> {
     @Query(nativeQuery = true, value = "SELECT * FROM song WHERE account_id = :account_id")
     List<Song> findSaveSong(int account_id);
+    @Query(nativeQuery = true, value = "select * from blog_music.song order by blog_music.song.id asc limit 10;")
+    List<Song> findNewSong();
+
+   @Query(nativeQuery = true, value = "select * from blog_music.song order by blog_music.song.id asc;")
+    List<Song> getAllOrderBySong_Id();
 }

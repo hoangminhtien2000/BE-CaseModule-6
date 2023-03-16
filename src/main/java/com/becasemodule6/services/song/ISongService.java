@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface ISongService extends CrudService<Song> {
     List<Song> findSaveSong(int account_id);
+    List<Song> findNewSong();
+    List<Song> getAllOrderBySong_Id();
+
+
 }

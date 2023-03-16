@@ -36,5 +36,13 @@ public class SongServiceImpl implements ISongService {
     public List<Song> findSaveSong(int account_id) {
         return songRepo.findSaveSong(account_id);
     }
+    @Override
+    public  List<Song> findNewSong(){
+        return songRepo.findNewSong();
+    }
 
+    @Override
+    public List<Song> getAllOrderBySong_Id() {
+        return  songRepo.getAllOrderBySong_Id();
+    }
 }

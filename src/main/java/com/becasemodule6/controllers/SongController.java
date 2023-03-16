@@ -20,6 +20,11 @@ public class SongController {
     @Autowired
     private ISongService iSongService;
 
+    @GetMapping("/findAllSong")
+    public ResponseEntity<List<Song>> getAllOrderBySong_Id(){
+        return new ResponseEntity<>(iSongService.getAllOrderBySong_Id(),HttpStatus.OK);
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Song>> findAllSong() {
         return new ResponseEntity<>(iSongService.findAll(), HttpStatus.OK);
@@ -34,7 +39,7 @@ public class SongController {
     public ResponseEntity<Song> save(@RequestBody Song song) {
         song.setActives(1);
         iSongService.save(song);
-        return new ResponseEntity<>(song,HttpStatus.OK);
+        return new ResponseEntity<>(song, HttpStatus.OK);
     }
 
     @PutMapping
@@ -53,5 +58,13 @@ public class SongController {
     public ResponseEntity<List<Song>> findSaveSong(@PathVariable int id) {
         return new ResponseEntity<>(iSongService.findSaveSong(id), HttpStatus.OK);
     }
+
+    @GetMapping("/findNewSong")
+    public ResponseEntity<List<Song>> findNewSong() {
+        return new ResponseEntity<>(iSongService.getAllOrderBySong_Id(), HttpStatus.OK);
+
+    }
+
+
 
 }
