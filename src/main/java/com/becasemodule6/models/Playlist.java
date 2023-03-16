@@ -14,12 +14,15 @@ public class Playlist {
     private String name;
     private long account_id;
 
+    private int active;
+
     @ManyToMany
     private List<Song> songs;
 
-    public Playlist(String name, long account_id) {
+    public Playlist(String name, long account_id, int active) {
         this.name = name;
         this.account_id = account_id;
+        this.active = active;
     }
 
     public Playlist() {

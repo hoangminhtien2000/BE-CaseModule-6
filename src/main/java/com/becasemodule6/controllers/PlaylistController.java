@@ -39,22 +39,22 @@ public class PlaylistController {
     }
 
     @GetMapping("/find/{id}")
-    public Playlist findPlaylistById(@PathVariable long id) {
+    public Playlist findPlaylistById(@PathVariable Long id) {
         return playlistService.findById(id);
     }
 
-    @GetMapping("/show")
-    public List<Playlist> getAll() {
-        return playlistService.findAll();
+    @GetMapping("/show/{id}")
+    public List<Playlist> getAll(@PathVariable long id) {
+        return playlistService.getAll(id);
     }
 
     @PostMapping("/create")
-    public AccountToken savePlaylist(@RequestBody PlaylistToken playlistToken) {
+    public void savePlaylist(@RequestBody PlaylistToken playlistToken) {
         long idAccount = playlistToken.getAccount_id();
         String namePlaylist = playlistToken.getName();
-        String token = playlistToken.getToken();
+        int active = playlistToken.getActive();
 
-        Playlist newPlaylist = new Playlist(namePlaylist, idAccount);
+        Playlist newPlaylist = new Playlist(namePlaylist, idAccount, active);
         playlistService.save(newPlaylist);
         Playlist playlist1 = playlistService.findPlaylistByNameAndIdAccount(namePlaylist, idAccount);
         Account account = accountService.findById(idAccount);
@@ -62,23 +62,55 @@ public class PlaylistController {
         playlists.add(playlist1);
         account.setPlaylist(playlists);
         accountService.save(account);
-        return new AccountToken(idAccount, account.getUsername(), account.getFull_name(), account.getGender(), account.getGmail(), account.getAddress(), account.getPhone_number(), account.getAvatar(), account.getRoles(), account.getPlaylist(), token);
+    }
+
+    @PostMapping("/save")
+    public void saveEditPlaylist(@RequestBody PlaylistToken playlistToken) {
+        long playlist_id = playlistToken.getId();
+        Playlist playlist = playlistService.findById(playlist_id);
+        playlist.setName(playlistToken.getName());
+        playlist.setActive(playlist.getActive());
+        playlistService.save(playlist);
     }
 
     @PostMapping("/add/song")
-    public AccountToken addSongToPlaylist(@RequestBody PlaylistSongId playlistSongId) {
-        long id_playlist = playlistSongId.getPlaylist_id();
-        long id_songId = playlistSongId.getSong_id();
-        long id_account = playlistSongId.getAccount_id();
-        String token = playlistSongId.getToken();
+    public void addSongToPlaylist(@RequestBody PlaylistSongId playlistSongId) {
+        long playlist_id = playlistSongId.getPlaylist_id();
+        long song_id = playlistSongId.getSong_id();
 
-        Account account = accountService.findById(id_account);
-        Playlist playlist = playlistService.findById(id_playlist);
-        Song song = songService.findById(id_songId);
+        Playlist playlist = playlistService.findById(playlist_id);
+        Song song = songService.findById(song_id);
         songs = playlist.getSongs();
         songs.add(song);
         playlist.setSongs(songs);
         playlistService.save(playlist);
-        return new AccountToken(id_account, account.getUsername(), account.getFull_name(), account.getGender(), account.getGmail(), account.getAddress(), account.getPhone_number(), account.getAvatar(), account.getRoles(), account.getPlaylist(), token);
+    }
+
+    @PostMapping("/checkSong")
+    public boolean checkSongInPlaylist(@RequestBody PlaylistSongId playlistSongId) {
+        long playlist_id = playlistSongId.getPlaylist_id();
+        long song_id = playlistSongId.getSong_id();
+
+        Playlist playlist = findPlaylistById(playlist_id);
+        songs = playlist.getSongs();
+        for (int i = 0; i < songs.size(); i++) {
+            if (songs.get(i).getId() == song_id) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @PostMapping("/remove/song")
+    public void removeSongInPlaylist(@RequestBody PlaylistSongId playlistSongId) {
+        long playlist_id = playlistSongId.getPlaylist_id();
+        long song_id = playlistSongId.getSong_id();
+
+        Playlist playlist = findPlaylistById(playlist_id);
+        songs = playlist.getSongs();
+        Song song = songService.findById(song_id);
+        songs.remove(song);
+        playlist.setSongs(songs);
+        playlistService.save(playlist);
     }
 }

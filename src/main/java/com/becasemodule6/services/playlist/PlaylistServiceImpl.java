@@ -33,6 +33,10 @@ public class PlaylistServiceImpl implements IPlaylistService {
         return playlistRepo.findById(id).get();
     }
 
+    public List<Playlist> getAll(long id) {
+        return playlistRepo.findAllByAccountId(id);
+    }
+
     public Playlist findPlaylistByNameAndIdAccount(String name, long id) {
         return playlistRepo.findPlaylistByNameAndIdAccount(name, id);
     }
