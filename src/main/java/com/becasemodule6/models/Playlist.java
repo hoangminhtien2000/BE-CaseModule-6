@@ -11,6 +11,7 @@ public class Playlist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    private String avatarPlaylist;
     private String name;
     private long account_id;
 
