@@ -1,5 +1,6 @@
 package com.becasemodule6.controllers;
 
+import com.becasemodule6.models.Account;
 import com.becasemodule6.models.Singer;
 import com.becasemodule6.models.SingerSong;
 import com.becasemodule6.models.Song;
@@ -52,12 +53,22 @@ public class SongController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
+    // Hoành thêm
     @GetMapping("/findSongBySinger/{id}")
     public List<Song> findSongBySinger(@PathVariable int id) {
         return songServiceIml.findSongBySinger(id);
 
     }
+    // Hoành thêm
+    @PostMapping("/save/newListens")
+    public Song saveNewListens(@RequestBody Song song) {
+        Song song1 = songServiceIml.findById(song.getId());
+        song1.setListens(song.getListens());
+        songServiceIml.save(song1);
+        return song1;
+    }
+
+
 
 
 
