@@ -53,8 +53,9 @@ public class PlaylistController {
         long idAccount = playlistToken.getAccount_id();
         String namePlaylist = playlistToken.getName();
         int active = playlistToken.getActive();
+        String avatarPlaylist = playlistToken.getAvatarPlaylist();
 
-        Playlist newPlaylist = new Playlist(namePlaylist, idAccount, active);
+        Playlist newPlaylist = new Playlist(avatarPlaylist, namePlaylist, idAccount, active);
         playlistService.save(newPlaylist);
         Playlist playlist1 = playlistService.findPlaylistByNameAndIdAccount(namePlaylist, idAccount);
         Account account = accountService.findById(idAccount);
@@ -68,6 +69,8 @@ public class PlaylistController {
     public void saveEditPlaylist(@RequestBody PlaylistToken playlistToken) {
         long playlist_id = playlistToken.getId();
         Playlist playlist = playlistService.findById(playlist_id);
+
+        playlist.setAvatarPlaylist(playlistToken.getAvatarPlaylist());
         playlist.setName(playlistToken.getName());
         playlist.setActive(playlist.getActive());
         playlistService.save(playlist);
