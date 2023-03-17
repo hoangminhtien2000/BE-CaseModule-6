@@ -31,9 +31,28 @@ public class SongServiceImpl implements ISongService {
     public Song findById(Long id) {
         return songRepo.findById(id).get();
     }
+
+//    Hoành thêm
     public List<Song> findSongBySinger(int id){
        return  songRepo.findSongBySinger(id);
-
-
     }
+
+    //    Hoành thêm
+    public List<Song> findTop10Song(){
+        return  songRepo.findTop10Song();
+    }
+
+//    Hùng thêm
+
+
+
+
+
+    public List<Song> getAllOrderBySong_Id() {
+        return songRepo.getAllOrderBySong_Id();
+    }
+
+
+
+
 }

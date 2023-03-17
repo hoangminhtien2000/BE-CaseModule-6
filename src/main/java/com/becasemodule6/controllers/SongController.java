@@ -68,6 +68,23 @@ public class SongController {
         return song1;
     }
 
+    // Hoành thêm
+    @GetMapping("/findTop10Song")
+    public List<Song> findTop10Song() {
+        return songServiceIml.findTop10Song();
+    }
+
+
+
+//    Hùng thêm
+
+    @GetMapping("/findNewSong")
+    public ResponseEntity<List<Song>> findNewSong() {
+        return new ResponseEntity<>(songServiceIml.getAllOrderBySong_Id(), HttpStatus.OK);
+    }
+
+
+
 
 
 
