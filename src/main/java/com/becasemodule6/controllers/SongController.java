@@ -1,10 +1,6 @@
 package com.becasemodule6.controllers;
 
-import com.becasemodule6.models.Singer;
-import com.becasemodule6.models.SingerSong;
 import com.becasemodule6.models.Song;
-import com.becasemodule6.services.singer.ISingerService;
-import com.becasemodule6.services.singerSong.ISingerSongService;
 import com.becasemodule6.services.song.ISongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +16,7 @@ public class SongController {
     @Autowired
     private ISongService iSongService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public ResponseEntity<List<Song>> findAllSong() {
         return new ResponseEntity<>(iSongService.findAll(), HttpStatus.OK);
     }
@@ -37,7 +33,7 @@ public class SongController {
         return new ResponseEntity<>(song,HttpStatus.OK);
     }
 
-    @PutMapping
+    @PostMapping("/edit")
     public ResponseEntity<?> edit(@RequestBody Song song) {
         iSongService.save(song);
         return new ResponseEntity<>(HttpStatus.OK);
