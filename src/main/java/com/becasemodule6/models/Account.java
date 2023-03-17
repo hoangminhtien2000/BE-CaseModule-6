@@ -29,6 +29,9 @@ public class Account {
     @Column(name = "avatar", columnDefinition = "LONGTEXT")
     private String avatar;
 
+    @OneToMany
+    private List<Playlist> playlist;
+
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
 

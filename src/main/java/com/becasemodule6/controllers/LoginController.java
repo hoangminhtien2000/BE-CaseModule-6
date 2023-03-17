@@ -39,7 +39,7 @@ public class LoginController {
         String token = jwtService.createToken(authentication);
         Account account1 = accountService.findAccountByUsername(account.getUsername());
 
-        return new AccountToken(account1.getId() ,account.getUsername(), account1.getFull_name(), account1.getGender(), account1.getGmail(), account1.getAddress(), account1.getPhone_number(),account1.getAvatar(), account1.getRoles(),token);
+        return new AccountToken(account1.getId() ,account.getUsername(), account1.getFull_name(), account1.getGender(), account1.getGmail(), account1.getAddress(), account1.getPhone_number(),account1.getAvatar(), account1.getRoles(), account1.getPlaylist(),token);
     }
 
 }

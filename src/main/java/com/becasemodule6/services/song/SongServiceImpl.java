@@ -1,5 +1,6 @@
 package com.becasemodule6.services.song;
 
+import com.becasemodule6.models.SingerSong;
 import com.becasemodule6.models.Song;
 import com.becasemodule6.repositories.SongRepo;
 import org.springframework.beans.factory.annotation.Autowired;

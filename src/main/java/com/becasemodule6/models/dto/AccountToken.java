@@ -1,5 +1,6 @@
 package com.becasemodule6.models.dto;
 
+import com.becasemodule6.models.Playlist;
 import com.becasemodule6.models.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,5 +19,6 @@ public class AccountToken {
     private String phone_number;
     private String avatar;
     private List<Role> roles;
+    private List<Playlist> playlists;
     private String token;
 }
