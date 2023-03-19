@@ -31,6 +31,9 @@ public class Song {
 
     private Long listens;
 
+    private Long likes;
+
+
 
 }
 

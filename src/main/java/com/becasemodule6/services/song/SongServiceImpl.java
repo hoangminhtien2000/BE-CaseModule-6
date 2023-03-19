@@ -42,11 +42,12 @@ public class SongServiceImpl implements ISongService {
         return  songRepo.findTop10Song();
     }
 
+    //    Hoành thêm
+    public List<Song> findTopLikeSong(){
+        return  songRepo.findTopLikeSong();
+    }
+
 //    Hùng thêm
-
-
-
-
 
     public List<Song> getAllOrderBySong_Id() {
         return songRepo.getAllOrderBySong_Id();

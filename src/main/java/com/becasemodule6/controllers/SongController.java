@@ -75,6 +75,15 @@ public class SongController {
     }
 
 
+    // Hoành thêm
+    @GetMapping("/findTopLikeSong")
+    public List<Song> findTopLikeSong() {
+        return songServiceIml.findTopLikeSong();
+    }
+
+
+
+
 
 //    Hùng thêm
 
