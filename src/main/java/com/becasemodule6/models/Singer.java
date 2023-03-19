@@ -2,10 +2,7 @@ package com.becasemodule6.models;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -13,6 +10,9 @@ public class Singer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "singer_avatar", columnDefinition = "LONGTEXT")
+    private String singer_avatar;
 
     private String singer_name;
 
