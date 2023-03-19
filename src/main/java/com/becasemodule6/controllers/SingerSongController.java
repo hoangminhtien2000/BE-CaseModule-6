@@ -29,6 +29,11 @@ public class SingerSongController {
         return new ResponseEntity<>(iSingerSongService.findAll(), HttpStatus.OK) ;
     }
 
+    @GetMapping("/singer/{song_id}")
+    public ResponseEntity<List<SingerSong>> findSingerSongBySong_id(@PathVariable Long song_id){
+        return new ResponseEntity<>(iSingerSongService.findSingerSongBySong_id(song_id), HttpStatus.OK) ;
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<SingerSong> findByIdSingerSong(@PathVariable Long id) {
         return new ResponseEntity<>(iSingerSongService.findById(id), HttpStatus.OK);
@@ -54,4 +59,7 @@ public class SingerSongController {
         iSingerSongService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
+
 }

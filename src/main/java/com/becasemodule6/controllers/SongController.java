@@ -6,6 +6,7 @@ import com.becasemodule6.models.Song;
 import com.becasemodule6.services.singer.ISingerService;
 import com.becasemodule6.services.singerSong.ISingerSongService;
 import com.becasemodule6.services.song.ISongService;
+import com.becasemodule6.services.song.SongServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +18,14 @@ import java.util.List;
 @CrossOrigin("*")
 @RequestMapping("/songs")
 public class SongController {
+
+    @Autowired
+    private SongServiceImpl songServiceIml;
+
     @Autowired
     private ISongService iSongService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public ResponseEntity<List<Song>> findAllSong() {
         return new ResponseEntity<>(iSongService.findAll(), HttpStatus.OK);
     }
@@ -32,12 +37,11 @@ public class SongController {
 
     @PostMapping
     public ResponseEntity<Song> save(@RequestBody Song song) {
-        song.setActives(1);
         iSongService.save(song);
         return new ResponseEntity<>(song,HttpStatus.OK);
     }
 
-    @PutMapping
+    @PostMapping("/edit")
     public ResponseEntity<?> edit(@RequestBody Song song) {
         iSongService.save(song);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -53,5 +57,52 @@ public class SongController {
     public ResponseEntity<List<Song>> findSaveSong(@PathVariable int id) {
         return new ResponseEntity<>(iSongService.findSaveSong(id), HttpStatus.OK);
     }
+    // Hoành thêm
+    @GetMapping("/findSongBySinger/{id}")
+    public List<Song> findSongBySinger(@PathVariable int id) {
+        return songServiceIml.findSongBySinger(id);
+
+    }
+    // Hoành thêm
+    @PostMapping("/save/newListens")
+    public Song saveNewListens(@RequestBody Song song) {
+        Song song1 = songServiceIml.findById(song.getId());
+        song1.setListens(song.getListens());
+        songServiceIml.save(song1);
+        return song1;
+    }
+
+    // Hoành thêm
+    @GetMapping("/findTop10Song")
+    public List<Song> findTop10Song() {
+        return songServiceIml.findTop10Song();
+    }
+
+
+    // Hoành thêm
+    @GetMapping("/findTopLikeSong")
+    public List<Song> findTopLikeSong() {
+        return songServiceIml.findTopLikeSong();
+    }
+
+
+
+
+
+//    Hùng thêm
+
+    @GetMapping("/findNewSong")
+    public ResponseEntity<List<Song>> findNewSong() {
+        return new ResponseEntity<>(songServiceIml.getAllOrderBySong_Id(), HttpStatus.OK);
+    }
+
+
+
+
+
+
+
+
+
 
 }

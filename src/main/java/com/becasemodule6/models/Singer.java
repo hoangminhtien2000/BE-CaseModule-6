@@ -11,6 +11,9 @@ public class Singer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "singer_avatar", columnDefinition = "LONGTEXT")
+    private String singer_avatar;
+
     private String singer_name;
 
     private String singer_gender;
