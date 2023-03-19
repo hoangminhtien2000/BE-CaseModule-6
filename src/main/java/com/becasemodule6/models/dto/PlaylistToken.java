@@ -10,4 +10,5 @@ public class PlaylistToken {
     private String name;
     private long account_id;
     private int active;
+    private String avatarPlaylist;
 }
