@@ -1,10 +1,6 @@
 package com.becasemodule6.controllers;
 
-import com.becasemodule6.models.Singer;
-import com.becasemodule6.models.SingerSong;
 import com.becasemodule6.models.Song;
-import com.becasemodule6.services.singer.ISingerService;
-import com.becasemodule6.services.singerSong.ISingerSongService;
 import com.becasemodule6.services.song.ISongService;
 import com.becasemodule6.services.song.SongServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +60,6 @@ public class SongController {
 
     }
 
-
     // Hoành thêm
     @PostMapping("/save/newListens")
     public Song saveNewListens(@RequestBody Song song) {
@@ -83,8 +78,6 @@ public class SongController {
         return song1;
     }
 
-
-
     // Hoành thêm
     @GetMapping("/findTop10Song")
     public List<Song> findTop10Song() {
@@ -97,31 +90,16 @@ public class SongController {
         return songServiceIml.findTop5Song();
     }
 
-
     // Hoành thêm
     @GetMapping("/findTopLikeSong")
     public List<Song> findTopLikeSong() {
         return songServiceIml.findTopLikeSong();
     }
 
-
-
-
-
 //    Hùng thêm
-
     @GetMapping("/findNewSong")
     public ResponseEntity<List<Song>> findNewSong() {
         return new ResponseEntity<>(songServiceIml.getAllOrderBySong_Id(), HttpStatus.OK);
     }
-
-
-
-
-
-
-
-
-
 
 }
