@@ -1,7 +1,9 @@
 package com.becasemodule6.controllers;
 
 import com.becasemodule6.models.Singer;
+import com.becasemodule6.models.Song;
 import com.becasemodule6.services.singer.ISingerService;
+import com.becasemodule6.services.singer.SingerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +17,12 @@ import java.util.List;
 public class SingerController {
     @Autowired
     private ISingerService iSingerService;
+    @Autowired
+    private SingerServiceImpl singerServiceImpl;
 
     @GetMapping()
-    public ResponseEntity<List<Singer>> findAllSinger(){
-        return new ResponseEntity<>(iSingerService.findAll(), HttpStatus.OK) ;
+    public ResponseEntity<List<Singer>> findAllSinger() {
+        return new ResponseEntity<>(iSingerService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -49,4 +53,17 @@ public class SingerController {
         iSingerService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
+
+//    Hoành thêm
+
+    @GetMapping("/find5Singer")
+    public List<Singer> find5Singer() {
+        return  singerServiceImpl.find5Singer();
+    }
+
+
+
+
 }
