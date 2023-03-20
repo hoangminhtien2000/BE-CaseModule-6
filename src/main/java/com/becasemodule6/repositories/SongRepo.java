@@ -18,9 +18,15 @@ public interface SongRepo extends PagingAndSortingRepository<Song, Long> {
             "JOIN blog_music.singer on blog_music.singer.id=blog_music.singer_song.singer_id WHERE blog_music.singer.id=:id", nativeQuery = true)
     List<Song> findSongBySinger(@Param("id") int id);
 
+
+
     @Query(value = "SELECT * FROM blog_music.song \n" +
             " ORDER BY blog_music.song.listens DESC LIMIT 10", nativeQuery = true)
-    List<Song> findTop10Song();
+    List <Song> findTop10Song();
+
+    @Query(value = "SELECT * FROM blog_music.song \n" +
+            " ORDER BY blog_music.song.listens DESC LIMIT 5", nativeQuery = true)
+    List <Song> findTop5Song();
 
 
 // Hoành thêm

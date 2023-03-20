@@ -27,7 +27,7 @@ public class RegisterController {
         Role role = new Role(1);
         roles.add(role);
 
-        String avatar = "https://i.pinimg.com/564x/bf/d0/86/bfd086c4e3a9a69e9889267cb739bebc.jpg";
+        String avatar = "https://i.pinimg.com/564x/a2/4a/f1/a24af1a25179acac93d7f2bd507b0985.jpg";
         account.setAvatar(avatar);
         account.setRoles(roles);
         account.setPlaylist(playlists);

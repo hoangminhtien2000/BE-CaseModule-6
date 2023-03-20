@@ -38,4 +38,12 @@ public class SingerServiceImpl implements ISingerService {
     }
 
 
+//    Hoành thêm
+
+
+    public List<Singer> find5Singer ( ){
+        return singerRepo.find5Singer();
+    }
+
+
 }

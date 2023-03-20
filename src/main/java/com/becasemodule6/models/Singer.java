@@ -32,4 +32,5 @@ public class Singer {
 
     private String information;
 
+
 }
