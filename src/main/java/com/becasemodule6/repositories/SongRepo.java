@@ -13,6 +13,10 @@ public interface SongRepo extends PagingAndSortingRepository<Song, Long> {
     @Query(nativeQuery = true, value = "SELECT * FROM song WHERE account_id = :account_id")
     List<Song> findSaveSong(int account_id);
 
+
+    @Query(nativeQuery = true, value = "SELECT * FROM song WHERE actives = :actives")
+    List<Song> showActiveSong(int actives);
+
     //    Hoành thêm
     @Query(value = "SELECT * FROM blog_music.song JOIN blog_music.singer_song on blog_music.song.id=blog_music.singer_song.song_id\n" +
             "JOIN blog_music.singer on blog_music.singer.id=blog_music.singer_song.singer_id WHERE blog_music.singer.id=:id", nativeQuery = true)

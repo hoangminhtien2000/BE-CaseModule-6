@@ -26,6 +26,11 @@ public class SongController {
         return new ResponseEntity<>(iSongService.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/show/{active}")
+    public ResponseEntity<List<Song>> showActiveSong(@PathVariable int active) {
+        return new ResponseEntity<>(iSongService.showActiveSong(active), HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Song> findById(@PathVariable Long id) {
         return new ResponseEntity<>(iSongService.findById(id), HttpStatus.OK);
