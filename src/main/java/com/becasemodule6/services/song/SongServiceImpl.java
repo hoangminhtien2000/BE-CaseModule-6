@@ -38,9 +38,13 @@ public class SongServiceImpl implements ISongService {
         return songRepo.findSaveSong(account_id);
     }
 
+    @Override
+    public List<Song> showActiveSong(int actives) {
+        return songRepo.showActiveSong(actives);
+    }
 
 
-//    Hoành thêm
+    //    Hoành thêm
     public List<Song> findSongBySinger(int id){
        return  songRepo.findSongBySinger(id);
     }
