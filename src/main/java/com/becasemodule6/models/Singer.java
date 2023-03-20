@@ -32,7 +32,5 @@ public class Singer {
 
     private String information;
 
-    @Column(name = "singer_avatar", columnDefinition = "LONGTEXT")
-    private String singer_avatar;
 
 }

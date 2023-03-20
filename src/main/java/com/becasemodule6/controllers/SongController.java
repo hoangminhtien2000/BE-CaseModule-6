@@ -63,6 +63,8 @@ public class SongController {
         return songServiceIml.findSongBySinger(id);
 
     }
+
+
     // Hoành thêm
     @PostMapping("/save/newListens")
     public Song saveNewListens(@RequestBody Song song) {
@@ -72,10 +74,27 @@ public class SongController {
         return song1;
     }
 
+    // Hoành thêm lưu lượt like mới
+    @PostMapping("/save/newLikes")
+    public Song saveNewLikess(@RequestBody Song song) {
+        Song song1 = songServiceIml.findById(song.getId());
+        song1.setLikes(song.getLikes());
+        songServiceIml.save(song1);
+        return song1;
+    }
+
+
+
     // Hoành thêm
     @GetMapping("/findTop10Song")
     public List<Song> findTop10Song() {
         return songServiceIml.findTop10Song();
+    }
+
+    // Hoành thêm
+    @GetMapping("/findTop5Song")
+    public List<Song> findTop5Song() {
+        return songServiceIml.findTop5Song();
     }
 
 
