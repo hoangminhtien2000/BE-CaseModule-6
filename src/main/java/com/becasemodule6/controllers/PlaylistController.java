@@ -33,6 +33,11 @@ public class PlaylistController {
     List<Song> songs = new ArrayList<>();
     List<Playlist> playlists = new ArrayList<>();
 
+    @GetMapping("showActive/{id}")
+    public List<Playlist> findAllPlaylistActive(@PathVariable int id) {
+        return playlistService.findPlaylistActive(id);
+    }
+
     @GetMapping("/delete/{id}")
     public void deletePlaylist(@PathVariable long id) {
         playlistService.delete(id);
@@ -70,6 +75,7 @@ public class PlaylistController {
         long playlist_id = playlistToken.getId();
         Playlist playlist = playlistService.findById(playlist_id);
 
+        playlist.setActive(playlistToken.getActive());
         playlist.setAvatarPlaylist(playlistToken.getAvatarPlaylist());
         playlist.setName(playlistToken.getName());
         playlist.setActive(playlist.getActive());

@@ -13,6 +13,10 @@ public class PlaylistServiceImpl implements IPlaylistService {
     @Autowired
     PlaylistRepo playlistRepo;
 
+    public List<Playlist> findPlaylistActive(int active) {
+        return playlistRepo.findAllByActive(active);
+    }
+
     @Override
     public List<Playlist> findAll() {
         return (List<Playlist>) playlistRepo.findAll();

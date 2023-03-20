@@ -14,5 +14,6 @@ public interface PlaylistRepo extends CrudRepository<Playlist, Long> {
     @Query("SELECT p FROM Playlist p WHERE p.account_id = :id")
     List<Playlist> findAllByAccountId(long id);
 
-
+    @Query("SELECT p FROM Playlist p WHERE p.active = :active")
+    List<Playlist> findAllByActive(int active);
 }
