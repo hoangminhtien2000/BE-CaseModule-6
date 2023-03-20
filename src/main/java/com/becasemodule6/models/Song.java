@@ -14,6 +14,7 @@ public class Song {
 
     private String song_name;
 
+    @Column(name = "description", columnDefinition = "LONGTEXT")
     private String description;
 
     @Column(name = "file_mp3", columnDefinition = "LONGTEXT")
