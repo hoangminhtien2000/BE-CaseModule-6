@@ -59,7 +59,7 @@ public class SongController {
         return new ResponseEntity<>(iSongService.findSaveSong(id), HttpStatus.OK);
     }
 
-    @GetMapping("/findNewSong")
+    @GetMapping("/findNewSong/")
     public ResponseEntity<List<Song>> findNewSong() {
         return new ResponseEntity<>(iSongService.getAllOrderBySong_Id(), HttpStatus.OK);
 
