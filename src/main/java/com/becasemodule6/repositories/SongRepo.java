@@ -18,6 +18,9 @@ public interface SongRepo extends PagingAndSortingRepository<Song, Long> {
     @Query(nativeQuery = true, value = "SELECT * FROM song WHERE song_name = :song_name AND actives = 1")
     Song findSongBySongName(String song_name);
 
+    @Query(nativeQuery = true, value = "SELECT * FROM blog_music.song ORDER BY blog_music.song.id DESC limit 4;")
+    List<Song> find4NewSong();
+
     //    Hoành thêm
     @Query(value = "SELECT * FROM blog_music.song JOIN blog_music.singer_song on blog_music.song.id=blog_music.singer_song.song_id\n" +
             "JOIN blog_music.singer on blog_music.singer.id=blog_music.singer_song.singer_id WHERE blog_music.singer.id=:id", nativeQuery = true)
@@ -42,7 +45,7 @@ public interface SongRepo extends PagingAndSortingRepository<Song, Long> {
 
 //    Hùng thêm
 
-    @Query(nativeQuery = true, value = "select * from blog_music.song ORDER BY blog_music.song.id desc limit 4;")
+    @Query(nativeQuery = true, value = "select * from blog_music.song order by blog_music.song.id desc;")
     List<Song> getAllOrderBySong_Id();
 
 

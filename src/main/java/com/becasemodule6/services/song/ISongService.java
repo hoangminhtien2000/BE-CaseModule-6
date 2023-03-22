@@ -13,4 +13,6 @@ public interface ISongService extends CrudService<Song> {
 
     Song findSongBySongName(String song_name);
 
+    List<Song> find4NewSong();
+
 }
