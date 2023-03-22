@@ -22,6 +22,7 @@ public class Singer {
 
     private String music_genre;
 
+    @Column(name = "story", columnDefinition = "LONGTEXT")
     private String story;
 
     private int year;
@@ -30,6 +31,7 @@ public class Singer {
 
     private String hot_music;
 
+    @Column(name = "information", columnDefinition = "LONGTEXT")
     private String information;
 
 
