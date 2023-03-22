@@ -42,7 +42,7 @@ public interface SongRepo extends PagingAndSortingRepository<Song, Long> {
 
 //    Hùng thêm
 
-    @Query(nativeQuery = true, value = "select * from blog_music.song order by blog_music.song.id desc;")
+    @Query(nativeQuery = true, value = "select * from blog_music.song ORDER BY blog_music.song.id desc limit 4;")
     List<Song> getAllOrderBySong_Id();
 
 
