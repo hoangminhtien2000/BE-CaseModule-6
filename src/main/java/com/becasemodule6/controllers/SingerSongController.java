@@ -1,9 +1,12 @@
 package com.becasemodule6.controllers;
 
+import com.becasemodule6.models.Singer;
 import com.becasemodule6.models.SingerSong;
+import com.becasemodule6.models.Song;
 import com.becasemodule6.models.dto.SingerSongId;
 import com.becasemodule6.services.singer.ISingerService;
 import com.becasemodule6.services.singerSong.ISingerSongService;
+import com.becasemodule6.services.singerSong.SingerSongImpl;
 import com.becasemodule6.services.song.ISongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +26,14 @@ public class SingerSongController {
 
     @Autowired
     private ISingerSongService iSingerSongService;
+    @Autowired
+    SingerSongImpl singerSongService;
+
+    @GetMapping("/findSong/singer/{singer_id}")
+    public List<Song> findSongBySinger(@PathVariable Long singer_id) {
+        Singer singer = iSingerService.findById(singer_id);
+        return singerSongService.findSongBySinger(singer);
+    }
 
     @GetMapping()
     public ResponseEntity<List<SingerSong>> findAllSingerSong(){

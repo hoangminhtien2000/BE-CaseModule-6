@@ -1,11 +1,15 @@
 package com.becasemodule6.services.singerSong;
 
+import com.becasemodule6.models.Singer;
 import com.becasemodule6.models.SingerSong;
+import com.becasemodule6.models.Song;
+import com.becasemodule6.models.dto.SingerSongId;
 import com.becasemodule6.repositories.SingerSongRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class SingerSongImpl implements ISingerSongService {
     @Autowired
@@ -34,5 +38,9 @@ public class SingerSongImpl implements ISingerSongService {
     @Override
     public List<SingerSong> findSingerSongBySong_id(Long song_id) {
         return singerSongRepo.findSingerSongBySong_id(song_id);
+    }
+
+    public List<Song> findSongBySinger(Singer singer) {
+        return singerSongRepo.findSongBySinger(singer);
     }
 }
