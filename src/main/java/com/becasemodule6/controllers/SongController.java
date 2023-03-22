@@ -63,6 +63,13 @@ public class SongController {
     public ResponseEntity<List<Song>> findSaveSong(@PathVariable int id) {
         return new ResponseEntity<>(iSongService.findSaveSong(id), HttpStatus.OK);
     }
+
+    @GetMapping("/find4NewSong")
+    public ResponseEntity<List<Song>> find4NewSong() {
+        return new ResponseEntity<>(iSongService.find4NewSong(), HttpStatus.OK);
+    }
+
+
     // Hoành thêm
     @GetMapping("/findSongBySinger/{id}")
     public List<Song> findSongBySinger(@PathVariable int id) {

@@ -48,6 +48,11 @@ public class SongServiceImpl implements ISongService {
         return songRepo.findSongBySongName(song_name);
     }
 
+    @Override
+    public List<Song> find4NewSong() {
+        return songRepo.find4NewSong();
+    }
+
 
     //    Hoành thêm
     public List<Song> findSongBySinger(int id){
